@@ -1,0 +1,26 @@
+[project]
+name = "music-llm-mcp"
+version = "0.1.0"
+description = "MCP server that lets an MCP client ask other LLMs (OpenAI, Gemini, Ollama) for chords and melodies, saved as MIDI"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp==2.3.0",
+    "httpx==0.28.1",
+    "midiutil==1.2.1",
+    "pydantic>=2.7,<3",
+]
+
+[project.scripts]
+music-llm-mcp = "music_llm_mcp.server:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/music_llm_mcp"]
